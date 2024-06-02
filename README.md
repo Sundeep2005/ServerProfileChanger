@@ -1,1 +1,1 @@
-Join [HeYoCommunity](https://discord.gg/n6m3NNUzuK)
+Join [HeYo Community](https://discord.gg/n6m3NNUzuK)
