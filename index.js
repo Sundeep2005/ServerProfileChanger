@@ -17,12 +17,9 @@ client.once('ready', () => {
     client.on('messageCreate', async (message) => {
         if(message.content === '!changeicon') {
 
-            const guild = client.guilds.cache.get(config.guildid);
-            const random = guild.members.cache.random();
-
             if(message.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
                 await changeServerIcon();
-                message.channel.send(`Meow!!!!, picture van ${random.user.tag}`);
+
             } else {
                 message.channel.send('Jij hebt letterlijk geen rechten, NIFFOOWW!');
             }
@@ -32,10 +29,7 @@ client.once('ready', () => {
     async function changeServerIcon() {
         try {
             const guild = client.guilds.cache.get(config.guildid);
-
-
             const random = guild.members.cache.random();
-            // const random = members.random();
 
             const avatar = random.user.displayAvatarURL({
                 format: 'png',
@@ -46,6 +40,8 @@ client.once('ready', () => {
             const buffer = await response.buffer();
 
             await guild.setIcon(buffer);
+            guild.channels.cache.get('756248300604358666').send(`Meow!!!!, picture van ${random.user.tag}`);
+            
             console.log(`Server profile is geupdate naar ${random.user.tag} avatar`);
         } catch (error) {
             console.error(error);
